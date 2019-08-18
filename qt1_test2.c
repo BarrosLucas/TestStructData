@@ -7,24 +7,23 @@ struct Node {
 	struct Node *next;
 };
 
-void remove2(struct Node **p){
-	struct Node *aux = NULL;
-	while(p){
-		aux = (*p)->next;
-		free(*p);
-		p = aux;
+void DestroiLista(struct Node *node){
+	if(!node){
+		printf("ali ");
+		return;
+	}else{
+		struct Node *n = node->next;
+		free(node);
+		return DestroiLista(n);
 	}
-	p = NULL;
 }
 
 void Append(struct Node **node, int value){
 	if(!*node){
-		//printf("1\n");
 		*node = (struct Node*) malloc(sizeof(struct Node));
 		(*node)->value = value;
 		(*node)->next = NULL;
 	}else{
-		//printf("2\n");
 		struct Node *outroNode = *node;
 		while(outroNode->next){
 			outroNode = outroNode->next;
@@ -107,7 +106,8 @@ int main(){
 	printf("\n");
 	Merge(L,D);
 	
-	remove2(L);
+	printf("\nLiberar:\n");
+	DestroiLista(L);
 	printf("\nResult: \n");
 	printList(&L);
 	
