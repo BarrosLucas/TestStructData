@@ -14,7 +14,8 @@ int push(fila*damae, int value){
     if(((damae)->last - (damae)->first)==((damae)->size)){
         (damae)->size *= 2;
         int * newArray=(int *) malloc(sizeof(int)*(damae)->size);
-        for(int i = damae->first;i < damae->last;i++){
+        int i;
+        for(i = damae->first;i < damae->last;i++){
             newArray[i] = damae->queue[i];
         }
         damae->queue = newArray;
@@ -37,7 +38,8 @@ int pop(fila*damae){
 }
 
 void printList(fila*damae){
-    for(int i = (damae)->first;i<=(damae)->last;i++){
+	int i;
+    for(i = (damae)->first;i<=(damae)->last;i++){
         printf("%d ",(damae)->queue[i]);
     }
 }
@@ -52,7 +54,8 @@ int main (void){
     daputa.last=-1;
     daputa.queue = (int *) malloc(sizeof(int)*daputa.size);
 
-    for(int i=0;i<50;i++){
+	int i;
+    for(i=0;i<50;i++){
         push(&daputa,i);
     }
 
